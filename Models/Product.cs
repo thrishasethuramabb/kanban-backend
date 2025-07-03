@@ -9,6 +9,8 @@
         public string BinSize { get; set; }
         public int Qty { get; set; }
         public string ProductionLine { get; set; }
+        public string StationCode { get; set; }
+        public int? ExternalKanbanId { get; set; }
     }
 
 }

@@ -12,5 +12,10 @@ namespace kanbanBackend.Models
         public string? StrBinSize { get; set; }
         public string? StrProductionArea { get; set; }
         public string? ImagePath { get; set; }    // Add this property so EF maps the image path column from the view
+        public string? StrStationCode { get; set; }
+
+        public int? Id { get; set; }
+
+        public int? ExternalKanbanId { get; set; }
     }
 }

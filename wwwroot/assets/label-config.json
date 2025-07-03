@@ -1,57 +1,58 @@
 {
-  // ── Overall label dimensions ────────────────────────────────────────────────
   "dimensions": {
-    "width": "287pt", // total label width (in points)
-    "height": "95.7pt" // total label height (in points)
+    "width": "287pt",
+    "height": "95.7pt"
   },
-
-  // ── Border styling ─────────────────────────────────────────────────────────
   "border": {
-    "thickness": "2.5pt" // border line thickness around each label
+    "thickness": "2.8pt"
   },
-
-  // ── Font configuration ─────────────────────────────────────────────────────
   "fonts": {
-    "family": "Arial, sans-serif", // fallback font-family list
+    "family": "Arial, sans-serif",
     "sizes": {
-      "topLabel": "5pt", // font-size for the small header labels (e.g. "Quantity")
-      "topValue": "7pt", // font-size for the header values (e.g. "5")
-      "cellBody": "8pt", // default font-size for most cell text
-      "partLabel": "4pt", // font-size for the "Part Number" label
-      "partValue": "13pt", // font-size for the actual part-number value
-      "descLabel": "6pt", // font-size for description labels within the body
-      "descValue": "7pt", // font-size for the material-description text
-      "placeholder": "5pt", // font-size for the "No Picture Here" placeholder
-      "bottomLabel": "6pt", // font-size for the bottom-row labels (e.g. "Kanban")
-      "station": "8pt" // font-size for the station code at the very bottom
+      "topLabel": "5pt",
+      "topValue": "7pt",
+      "cellBody": "8pt",
+      "partLabel": "4pt",
+      "partValue": "13pt",
+      "descLabel": "6pt",
+      "descValue": "7pt",
+      "placeholder": "5pt",
+      "bottomLabel": "8pt",
+      "station": "8pt"
     }
   },
-
-  // ── Internal paddings and gutters ──────────────────────────────────────────
   "paddings": {
-    "cell": "1pt", // padding inside each table cell
-    "stackGap": "2pt", // vertical gap between stacked rows in the body
-    "rowGutter": "5pt" // vertical space between adjacent labels
+    "cell": "1pt",
+    "stackGap": "2pt",
+    "rowGutter": "5pt"
   },
-
-  // ── Base color mapping for production areas ───────────────────────────────
   "subcategoryColors": {
-    "EMAX2.STAT": "#0070C0", // blue
-    "XT7_E1.2.STAT": "#92D050", // green
-    "T7T8.STAT": "#FF9900", // orange
-    "XT2_XT4.ATO": "#FF33CC", // magenta
-    "TMAX.STAT": "#000000", // black
-    "XT5.STAT": "#FF0000", // red
-    "XT1.STAT": "#00FFFF", // cyan
-    "IH.STAT": "#FFFF00", // yellow
-    "TRUONE.STAT": "#A02B93", // purple
-    "R5.STAT": "#00FF00", // lime
-    "CP.STAT": "#993300", // brown
-    "R3B_R4B.STAT": "#FFCCFF", // pink
-    "R5B.STAT": "#808080" // gray
+    "EMAX2.STAT": "#0070C0",
+    "XT7 E1.2.STAT": "#92D050",
+    "XT7_E1.2.KIT": "#92D050",
+    "XT7_E1.2.BB": "#92D050",
+    "XT7_E1.2.SUB": "#92D050",
+    "T7T8.STAT": "#FF9900",
+    "XT2_XT4.ATO": "#FF33CC",
+    "XT2 XT4 TU.ST20": "#FF33CC",
+    "XT2 XT4 TU": "#FF33CC",
+    "XT2 XT4 ATO": "#FF33CC",
+    "XT2 XT4 TU.ST10": "#FF33CC",
+    "XT2 XT4 TU.ST30": "#FF33CC",
+    "XT2 XT4 TU.ST40": "#FF33CC",
+    "TMAX.STAT": "#000000",
+    "XT5.STAT": "#FF0000",
+    "XT1.STAT": "#00FFFF",
+    "IH.STAT": "#FFFF00",
+    "TRUONE.STAT": "#A02B93",
+    "R5.STAT": "#00FF00",
+    "CP.STAT": "#993300",
+    "R3B_R4B.STAT": "#FFCCFF",
+    "R5B.STAT": "#808080"
   },
 
-  // ── ~20% darker variants (for alternative themes) ────────────────────────
+
+
   "subcategoryColorsDarker": {
     "EMAX2.STAT": "#005A9C",
     "XT7_E1.2.STAT": "#75A040",
@@ -68,7 +69,6 @@
     "R5B.STAT": "#666666"
   },
 
-  // ── ~40% darker ("bolder") variants ──────────────────────────────────────
   "subcategoryColorsBolder": {
     "EMAX2.STAT": "#003D6F",
     "XT7_E1.2.STAT": "#5A8030",
@@ -85,3 +85,6 @@
     "R5B.STAT": "#4D4D4D"
   }
 }
+      
+  
+  

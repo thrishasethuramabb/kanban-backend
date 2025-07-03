@@ -49,6 +49,94 @@ namespace kanbanBackend.Controllers
             });
         }
 
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+        {
+            if (request == null || string.IsNullOrEmpty(request.Username) ||
+                string.IsNullOrEmpty(request.Password) || string.IsNullOrEmpty(request.ConfirmPassword))
+            {
+                return BadRequest("Incomplete registration data.");
+            }
+
+            if (request.Password != request.ConfirmPassword)
+            {
+                return BadRequest("Passwords do not match.");
+            }
+
+            // Check if username already exists
+            var existingUser = await _context.TblEmployee
+                .FirstOrDefaultAsync(e => e.StrUsername == request.Username);
+            if (existingUser != null)
+            {
+                return BadRequest("Username already exists.");
+            }
+
+            var employee = new Employee
+            {
+                IntEmployeeId = request.EmpId,
+                StrEmployeeFirstName = request.Fname,
+                StrEmployeeLastName = request.Lname,
+                StrUsername = request.Username,
+                StrPassword = HashSHA1(request.Password),
+                BitIsActive = true,
+                StrRole = request.Role.ToLower() == "administrator" ? "admin" :
+                          request.Role.ToLower() == "manager" ? "manager" : "user",
+               
+            };
+
+            _context.TblEmployee.Add(employee);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "User registered successfully." });
+
+        }
+        [HttpPut("pw/reset")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest request)
+        {
+            if (string.IsNullOrEmpty(request.Username) ||
+                string.IsNullOrEmpty(request.Password) ||
+                request.Password != request.ConfirmPassword)
+            {
+                return BadRequest("Invalid request or passwords do not match.");
+            }
+
+            var employee = await _context.TblEmployee.FirstOrDefaultAsync(e => e.StrUsername == request.Username);
+            if (employee == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            employee.StrPassword = HashSHA1(request.Password);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Password updated successfully." });
+        }
+
+        [HttpPut("role/reset")]
+        public async Task<IActionResult> ResetRole([FromBody] ResetRoleRequest request)
+        {
+            if (string.IsNullOrEmpty(request.Username) || string.IsNullOrEmpty(request.Role))
+            {
+                return BadRequest("Invalid request.");
+            }
+
+            var employee = await _context.TblEmployee.FirstOrDefaultAsync(e => e.StrUsername == request.Username);
+            if (employee == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            // Normalize role
+            string normalizedRole = request.Role.ToLower();
+            if (normalizedRole == "administrator") normalizedRole = "admin";
+            else if (normalizedRole == "manager") normalizedRole = "manager";
+            else normalizedRole = "user";
+
+            employee.StrRole = normalizedRole;
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Role updated successfully." });
+        }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)

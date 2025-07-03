@@ -14,5 +14,11 @@ public sealed class ProductMap : ClassMap<Product>
                                     // and/or allow "" as null
                                     .TypeConverterOption.NullValues(string.Empty);
         Map(m => m.ProductionLine).Name("ProductionLine");
+        Map(m => m.StationCode)
+  .Name("StationCode");
+
+        Map(m => m.ExternalKanbanId)
+      .Name("ExternalKanbanId")
+      .TypeConverterOption.NullValues(string.Empty);
     }
 }

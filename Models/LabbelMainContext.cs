@@ -84,7 +84,23 @@ public partial class LabbelMainContext : DbContext
             entity.Property(e => e.IntBin).HasColumnName("intBin");
             entity.Property(e => e.IntMaterial).HasColumnName("intMaterial");
             entity.Property(e => e.IntQuantity).HasColumnName("intQuantity");
+            entity.Property(e => e.StrStationCode).HasColumnName("strStationCode");
+            entity
+             .Property(e => e.ExternalKanbanId)
+             .HasColumnName("ExternalKanbanId");
+
+            // Explicit navigation mapping
+            entity.HasOne(k => k.Material)
+                .WithMany()
+                .HasForeignKey(k => k.IntMaterial)
+                .HasConstraintName("FK_tblKanban_tblMaterial");
+
+            entity.HasOne(k => k.Area)
+                .WithMany()
+                .HasForeignKey(k => k.IntArea)
+                .HasConstraintName("FK_tblKanban_tblAreas");
         });
+
 
         modelBuilder.Entity<TblMaterial>(entity =>
         {
@@ -136,6 +152,7 @@ public partial class LabbelMainContext : DbContext
             entity.Property(e => e.IntRotation).HasColumnName("intRotation");
             entity.Property(e => e.IntStorageType).HasColumnName("intStorageType");
         });
+       
 
         modelBuilder.Entity<VwKanban>(entity =>
         {
@@ -159,6 +176,17 @@ public partial class LabbelMainContext : DbContext
             entity.Property(e => e.StrProductionArea)
                 .HasMaxLength(50)
                 .HasColumnName("strProductionArea");
+            entity
+            .Property(e => e.StrStationCode)
+            .HasMaxLength(10)              // adjust length if needed
+            .HasColumnName("strStationCode");
+            entity.Property(e => e.ImagePath)
+            .HasColumnName("ImagePath");
+            entity.Property(e => e.Id)
+          .HasColumnName("id");
+            entity.Property(e => e.ExternalKanbanId)
+                  .HasColumnName("ExternalKanbanId");
+
         });
 
         OnModelCreatingPartial(modelBuilder);

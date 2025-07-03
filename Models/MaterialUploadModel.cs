@@ -22,7 +22,11 @@ namespace kanbanBackend.Models
         [Required]
         public string ProductionLine { get; set; }
 
+        public string? StationCode { get; set; }
+
         // Make this optional:
         public IFormFile? Picture { get; set; }
+
+        public int? ExternalKanbanId { get; set; }
     }
 }

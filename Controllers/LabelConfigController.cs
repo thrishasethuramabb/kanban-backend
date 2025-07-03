@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
-namespace YourAppNamespace.Controllers
+namespace kanbanBackend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
